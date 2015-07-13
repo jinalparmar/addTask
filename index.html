@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html data-ng-app="addTasker">
+<head>
+<meta charset="UTF-8">
+<title>Task Tracker</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="new.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<body data-ng-controller="secondCtrl">
+	<div class="container">
+		<div class="jumbotron">
+			<!-- header -->
+			<h3>Daily Task Schedule</h3>
+			<h5 class="footer">Orders</h5>
+			<div class="alert alert-danger" id="alertDiv" data-ng-show="(taskForm.taskName.$dirty && taskForm.taskName.$invalid)||(taskForm.taskDate.$dirty && taskForm.taskDate.$invalid)||(taskForm.taskAssigned.$dirty && taskForm.taskAssigned.$invalid)">
+				<strong>Error!</strong> Please Fill the highlighted field
+			</div>
+		</div>
+		<!-- left side form to add new task -->
+		<div id="formDiv">
+			<h2>Create a Order</h2>
+			<form role="form" name="taskForm">
+				<div class="form-group">
+					<label for="email">Task</label> <input type="text" name="taskName"
+						data-ng-model="td.name" required class="form-control" id="newTask">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Date</label> <input type="text" name="taskDate"
+						data-ng-model="td.date" required class="form-control" id="taskDate">
+				</div>
+				<div class="form-group">
+					<label for="pwd">Assigned To</label> <input type="text" name="taskAssigned"
+						data-ng-model="td.assigned" required class="form-control" id="assignTo">
+				</div>
+				<button type="button" id="addTask" data-ng-click="addTask(td)" class="btn btn-default btn-lg" value="submit" data-ng-disabled="taskForm.$invalid">Submit Order</button>
+			</form>
+		</div>
+		<!-- table for existing tasks -->
+			<div id="existingTask">
+			<h2>Existing Order</h2>
+			<table class="table table-striped" id="taskTable">
+				<tbody id="tableBody">
+				<tr data-ng-repeat="tk in task">
+					<td>{{tk.name}}</td>
+					<td>{{tk.date}}</td>
+					<td>{{tk.assigned}}</td>
+				    <td><button data-ng-click="remove($index)">Remove Order</button></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+			<div id="existingTask">
+			<h2>Removed Orders</h2>
+			<table class="table table-striped" id="taskTable">
+				<tbody id="tableBody">
+					<tr data-ng-repeat="remTask in removeTask">
+						<td>{{remTask.name}}</td>
+						<td>{{remTask.date}}</td>
+						<td>{{remTask.assigned}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+#formDiv {
+	width: 50%;
+	background-color: white;
+	padding: 20px;
+	float: left;
+}
+
+#addTask {
+	background-color: #C0C0C0;
+	color: white;
+}
+
+#formDiv input {
+	background-color: #C0C0C0;
+}
+
+body {
+	background-color: #C0C0C0;
+}
+
+#existingTask {
+	width: 45%;
+	background-color: white;
+	padding: 20px;
+	float: left;
+	margin-left: 20px;
+}
+.footer{
+	color:#C0C0C0;
+}
+#taskTable {
+	border: 4px solid #C0C0C0;
+}
+
+.error {
+	border: 2px solid red;
+}
+
+.hidden {
+	display: none;
+}
+input.ng-dirty.ng-invalid
+{
+	border: 2px solid red;
+}
